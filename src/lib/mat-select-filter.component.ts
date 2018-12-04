@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter, Output, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, ViewChild, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
@@ -10,7 +10,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
   `,
   styleUrls: ['./mat-select-filter.component.scss']
 })
-export class MatSelectFilterComponent implements OnInit {
+export class MatSelectFilterComponent implements OnInit, OnDestroy {
 
   @ViewChild('input') input;
 
@@ -43,5 +43,9 @@ export class MatSelectFilterComponent implements OnInit {
     if (!this.placeholder) {
       this.placeholder = 'Search...';
     }
+  }
+
+  ngOnDestroy() {
+    this.filterArrayReturn.emit(this.array);
   }
 }
