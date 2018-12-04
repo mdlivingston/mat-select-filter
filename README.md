@@ -36,7 +36,7 @@ Next just add it to the desired material select:
 </mat-form-field>
 ```
 
-Send your desired filtered array using the [array]="variables" or [array]="['one', 'two', 'three']"...
+Send your desired filtered array using the [array]="variables" or [array]="['one', 'two', 'three']". This input will only accept **basic arrays**.
 
 The (filterArrayReturn) method returns the filtered results after every keyboard action while searching... 
 
@@ -46,7 +46,7 @@ The placeholder text for the search box is access by:
 <mat-select-filter [placeholder]="'Search..'" [array]="variables" (filterArrayReturn)="filteredVariables = $event"></mat-select-filter>
 ```
 
-but it defaults to 'Search...
+but it defaults to 'Search...'
 
 
 Hope you enjoy! 
