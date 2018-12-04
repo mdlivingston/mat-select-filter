@@ -39,9 +39,9 @@ export class MatSelectFilterComponent implements OnInit {
     })
     setTimeout(() => {
       this.input.nativeElement.focus();
-      if (!this.placeholder) {
-        this.placeholder = 'Search...';
-      }
     }, 500)
+    if (!this.placeholder) {
+      this.placeholder = 'Search...';
+    }
   }
 }
