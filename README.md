@@ -29,8 +29,8 @@ Next just add it to the desired material select:
 <mat-form-field color="accent">
   <mat-select #select [value]="selectedVariableName" placeholder="{{ placeholder }}">
     <mat-select-filter [array]="variables" (filterArrayReturn)="filteredVariables = $event"></mat-select-filter>
-    <mat-option>
-      Hey, I love you. <3
+    <mat-option *ngFor="let variable of filteredVariables">
+      {{variable}}
     </mat-option>
   </mat-select>
 </mat-form-field>
@@ -46,3 +46,7 @@ The placeholder text for the search box is access by:
 <mat-select-filter [placeholder]="'Search..'" [array]="variables" (filterArrayReturn)="filteredVariables = $event"></mat-select-filter>
 ```
 
+but it defaults to 'Search...
+
+
+Hope you enjoy! 
