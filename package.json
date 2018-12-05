@@ -1,6 +1,6 @@
 {
   "name": "mat-select-filter",
-  "version": "1.2.0",
+  "version": "1.6.0",
   "peerDependencies": {
     "@angular/common": "^7.1.0",
     "@angular/core": "^7.1.0"

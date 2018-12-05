@@ -1,7 +1,7 @@
 # mat-select-filter
 
 ## Github
-https://github.com/mdlivingston
+https://github.com/mdlivingston/mat-select-filter
 
 ## Description
 
@@ -67,7 +67,7 @@ To focus the search input on every click you can do something like this:
 
 otherwise it will only focus once.
 
-To added a colored background do something like this:
+To add a colored background do something like this:
 
 ```
  <mat-select-filter [color]="'purple'" [array]="variables" (filterArrayReturn)="filteredVariables = $event"></mat-select-filter>

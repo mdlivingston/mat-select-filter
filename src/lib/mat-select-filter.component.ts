@@ -4,8 +4,8 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 @Component({
   selector: 'mat-select-filter',
   template: `
-    <form [formGroup]="searchForm" class="search-select" [ngStyle]="{'background-color': color ? color : 'unset'}">
-      <input #input class="input" matInput placeholder="{{placeholder}}" formControlName="value">
+    <form [formGroup]="searchForm" class="mat-filter" [ngStyle]="{'background-color': color ? color : 'white'}">
+      <input #input class="mat-filter-input" matInput placeholder="{{placeholder}}" formControlName="value">
     </form>
   `,
   styleUrls: ['./mat-select-filter.component.scss']
