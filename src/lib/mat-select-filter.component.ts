@@ -18,7 +18,7 @@ export class MatSelectFilterComponent implements OnInit, OnDestroy {
   @Input('placeholder') placeholder: string;
   @Input('color') color: string;
 
-  @Output() filterArrayReturn = new EventEmitter<any>();
+  @Output() filteredReturn = new EventEmitter<any>();
 
   public filteredItems: any = [];
   public searchForm: FormGroup;
@@ -36,7 +36,7 @@ export class MatSelectFilterComponent implements OnInit, OnDestroy {
       } else {
         this.filteredItems = this.array.slice();
       }
-      this.filterArrayReturn.emit(this.filteredItems);
+      this.filteredReturn.emit(this.filteredItems);
     })
     setTimeout(() => {
       this.input.nativeElement.focus();
@@ -47,6 +47,6 @@ export class MatSelectFilterComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.filterArrayReturn.emit(this.array);
+    this.filteredReturn.emit(this.array);
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "mat-select-filter",
-  "version": "1.6.0",
+  "version": "2.1.0",
   "peerDependencies": {
     "@angular/common": "^7.1.0",
     "@angular/core": "^7.1.0"
@@ -21,9 +21,6 @@
   "description": "https://github.com/mdlivingston",
   "directories": {
     "lib": "lib"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
