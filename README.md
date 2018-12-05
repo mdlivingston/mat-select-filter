@@ -7,6 +7,10 @@ https://github.com/mdlivingston
 
 The mat-select-filter is a filterer for the material select drop downs. They currently do not support this so I decided to make my own. 
 
+## Demo
+
+https://stackblitz.com/edit/angular-mf9pqx
+
 ## Install 
 
 #### npm
@@ -27,7 +31,7 @@ Next just add it to the desired material select:
 
 ```
 <mat-form-field>
-  <mat-select [value]="selectedVariableName" placeholder="{{ placeholder }}">
+  <mat-select>
     <mat-select-filter [array]="variables" (filterArrayReturn)="filteredVariables = $event"></mat-select-filter>
     <mat-option *ngFor="let variable of filteredVariables">
       {{variable}}
@@ -62,6 +66,12 @@ To focus the search input on every click you can do something like this:
 ```
 
 otherwise it will only focus once.
+
+To added a colored background do something like this:
+
+```
+ <mat-select-filter [color]="'purple'" [array]="variables" (filterArrayReturn)="filteredVariables = $event"></mat-select-filter>
+```
 
 
 Hope you enjoy! 

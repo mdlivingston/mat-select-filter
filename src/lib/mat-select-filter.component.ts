@@ -4,7 +4,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 @Component({
   selector: 'mat-select-filter',
   template: `
-    <form [formGroup]="searchForm" class="search-select">
+    <form [formGroup]="searchForm" class="search-select" [ngStyle]="{'background-color': color ? color : 'unset'}">
       <input #input class="input" matInput placeholder="{{placeholder}}" formControlName="value">
     </form>
   `,
@@ -16,6 +16,7 @@ export class MatSelectFilterComponent implements OnInit, OnDestroy {
 
   @Input('array') array: any;
   @Input('placeholder') placeholder: string;
+  @Input('color') color: string;
 
   @Output() filterArrayReturn = new EventEmitter<any>();
 

@@ -1,8 +1,53 @@
 {
   "name": "mat-select-filter",
-  "version": "0.3.0",
+  "version": "1.2.0",
   "peerDependencies": {
     "@angular/common": "^7.1.0",
     "@angular/core": "^7.1.0"
-  }
+  },
+  "main": "bundles/mat-select-filter.umd.js",
+  "module": "fesm5/mat-select-filter.js",
+  "es2015": "fesm2015/mat-select-filter.js",
+  "esm5": "esm5/mat-select-filter.js",
+  "esm2015": "esm2015/mat-select-filter.js",
+  "fesm5": "fesm5/mat-select-filter.js",
+  "fesm2015": "fesm2015/mat-select-filter.js",
+  "typings": "mat-select-filter.d.ts",
+  "metadata": "mat-select-filter.metadata.json",
+  "sideEffects": false,
+  "dependencies": {
+    "tslib": "^1.9.0"
+  },
+  "description": "https://github.com/mdlivingston",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mdlivingston/mat-select-filter.git"
+  },
+  "keywords": [
+    "Angular",
+    "Angular",
+    "7",
+    "Material",
+    "Angular",
+    "Material",
+    "mat-select-filter",
+    "mat-select",
+    "filtering",
+    "dropdown",
+    "angular",
+    "dropdown",
+    "dropdown"
+  ],
+  "author": "Max Livingston",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mdlivingston/mat-select-filter/issues"
+  },
+  "homepage": "https://github.com/mdlivingston/mat-select-filter#readme"
 }
