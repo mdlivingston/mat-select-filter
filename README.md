@@ -9,7 +9,7 @@ The mat-select-filter is a filterer for the material select drop downs. They cur
 
 ## Demo
 
-https://stackblitz.com/edit/angular-mf9pqx
+https://stackblitz.com/edit/mat-select-filter
 
 ## Install 
 
@@ -113,6 +113,7 @@ You can also change the classes from a global css/scss file in your project by a
 * [array]
 * [color]
 * [placeholder]
+* [displayMember]
 * (filteredReturn)
 
 Hope you enjoy! 
