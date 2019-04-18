@@ -40,7 +40,31 @@ Next just add it to the desired material select:
 </mat-form-field>
 ```
 
-Send your desired filtered array using the [array]="variables" or [array]="['one', 'two', 'three']". This input will only accept **basic arrays**.
+Send your desired filtered array using the [array]="variables" or [array]="['one', 'two', 'three']". It now accepts an array objects thanks to Sen Alexandru. To use an array of objects just specify the objects key value you want to filter using the [displayMember] input. For example: 
+
+```
+var variables = [
+  {
+    id: 0,
+    name: 'test1'
+  },
+    {
+    id: 0,
+    name: 'test1'
+  }
+]
+```
+
+```
+<mat-form-field>
+  <mat-select>
+    <mat-select-filter [array]="variables" [displayMember]="'name'" (filteredReturn)="filteredVariables = $event"></mat-select-filter>
+    <mat-option *ngFor="let variable of filteredVariables">
+      {{variable}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+```
 
 The (filteredReturn) method returns the filtered results after every keyboard action while searching... 
 

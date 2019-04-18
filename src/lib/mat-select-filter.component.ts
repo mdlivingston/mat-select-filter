@@ -11,36 +11,41 @@ import { FormGroup, FormBuilder } from '@angular/forms';
   styleUrls: ['./mat-select-filter.component.scss']
 })
 export class MatSelectFilterComponent implements OnInit, OnDestroy {
-
   @ViewChild('input') input;
 
   @Input('array') array: any;
   @Input('placeholder') placeholder: string;
   @Input('color') color: string;
+  @Input('displayMember') displayMember: string;
 
   @Output() filteredReturn = new EventEmitter<any>();
 
   public filteredItems: any = [];
   public searchForm: FormGroup;
 
-  constructor(fb: FormBuilder
-  ) {
+  constructor(fb: FormBuilder) {
     this.searchForm = fb.group({
-      value: ""
-    })
+      value: ''
+    });
   }
+
   ngOnInit() {
     this.searchForm.valueChanges.subscribe(value => {
       if (value['value']) {
-        this.filteredItems = this.array.filter(name => name.toLowerCase().includes(value['value'].toLowerCase()));
+        if (this.displayMember == null) {
+          this.filteredItems = this.array.filter(name => name.toLowerCase().includes(value['value'].toLowerCase()));
+        } else {
+          this.filteredItems = this.array.filter(name => name[this.displayMember].toLowerCase().includes(value['value'].toLowerCase()));
+        }
       } else {
         this.filteredItems = this.array.slice();
       }
       this.filteredReturn.emit(this.filteredItems);
-    })
+    });
+
     setTimeout(() => {
       this.input.nativeElement.focus();
-    }, 500)
+    }, 500);
     if (!this.placeholder) {
       this.placeholder = 'Search...';
     }
