@@ -23,3 +23,15 @@
   color: gray;
   width: 100%;
 }
+
+.spinner {
+  position: absolute;
+  right: 16px;
+  top: calc(50% - 8px);
+}
+
+.noResultsMessage {
+    margin-top: 10px;
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+    font-size: 16px;
+}
