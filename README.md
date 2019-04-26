@@ -68,6 +68,10 @@ var variables = [
 
 The (filteredReturn) method returns the filtered results after every keyboard action while searching... 
 
+The [noResultsMessage] is the string you would like to display when you filter no results.
+
+The [showSpinner] allows you to turn off whether or not you would like to show a loading spinner while filtering.
+
 The placeholder text for the search box is access by:
 
 ```
@@ -114,6 +118,8 @@ You can also change the classes from a global css/scss file in your project by a
 * [color]
 * [placeholder]
 * [displayMember]
+* [noResultsMessage]
+* [showSpinner]
 * (filteredReturn)
 
 Hope you enjoy! 

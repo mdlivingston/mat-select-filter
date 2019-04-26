@@ -1,12 +1,18 @@
 import { Component, OnInit, Input, EventEmitter, Output, ViewChild, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-
+import {
+  A,
+  Z,
+  ZERO,
+  NINE,
+  SPACE, END, HOME,
+} from '@angular/cdk/keycodes';
 @Component({
   selector: 'mat-select-filter',
   template: `
   <form [formGroup]="searchForm" class="mat-filter" [ngStyle]="{'background-color': color ? color : 'white'}">
   <div>
-    <input #input class="mat-filter-input" matInput placeholder="{{placeholder}}" formControlName="value">
+  <input #input class="mat-filter-input" matInput placeholder="{{placeholder}}" formControlName="value" (keydown)="handleKeydown($event)">
     <mat-spinner *ngIf="localSpinner" class="spinner" diameter="16"></mat-spinner>
   </div>
   <div *ngIf="noResults"
@@ -78,6 +84,15 @@ export class MatSelectFilterComponent implements OnInit, OnDestroy {
     }
   }
 
+  handleKeydown(event: KeyboardEvent) {
+    // PREVENT PROPAGATION FOR ALL ALPHANUMERIC CHARACTERS IN ORDER TO AVOID SELECTION ISSUES
+    if ((event.key && event.key.length === 1) ||
+      (event.keyCode >= A && event.keyCode <= Z) ||
+      (event.keyCode >= ZERO && event.keyCode <= NINE) ||
+      (event.keyCode === SPACE)) {
+      event.stopPropagation();
+    }
+  }
   ngOnDestroy() {
     this.filteredReturn.emit(this.array);
   }
