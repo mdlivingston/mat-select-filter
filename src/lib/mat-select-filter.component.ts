@@ -32,6 +32,9 @@ export class MatSelectFilterComponent implements OnInit, OnDestroy {
   @Input('displayMember') displayMember: string;
   @Input('showSpinner') showSpinner = true;
   @Input('noResultsMessage') noResultsMessage = 'No results';
+  @Input('hasGroup') hasGroup: boolean;
+  @Input('groupArrayName') groupArrayName: string;
+
   noResults = false;
 
   localSpinner = false;
@@ -56,6 +59,12 @@ export class MatSelectFilterComponent implements OnInit, OnDestroy {
         if (this.displayMember == null) {
           this.filteredItems = this.array.filter(name => name.toLowerCase().includes(value['value'].toLowerCase()));
           // OTHERWISE, WE CHECK THE ENTIRE STRING
+        } else if (this.hasGroup && this.groupArrayName && this.displayMember) {
+          this.filteredItems = this.array.map(a => {
+            const objCopy = Object.assign({}, a);
+            objCopy[this.groupArrayName] = objCopy[this.groupArrayName].filter(g => g[this.displayMember].toLowerCase().includes(value['value'].toLowerCase()));
+            return objCopy;
+          }).filter(x => x[this.groupArrayName].length > 0);
         } else {
           this.filteredItems = this.array.filter(name => name[this.displayMember].toLowerCase().includes(value['value'].toLowerCase()));
         }

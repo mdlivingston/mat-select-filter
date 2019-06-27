@@ -65,6 +65,7 @@ var variables = [
   </mat-select>
 </mat-form-field>
 ```
+mat-select-filter now supports option group support thanks to jenniferarce! Just input the [hasGroup] boolean to true and add you [groupArrayName] string!
 
 The (filteredReturn) method returns the filtered results after every keyboard action while searching... 
 
@@ -119,6 +120,9 @@ You can also change the classes from a global css/scss file in your project by a
 * [placeholder]
 * [displayMember]
 * [noResultsMessage]
+* [showSpinner]
+* [hasGroup]
+* [groupArrayName]
 * [showSpinner]
 * (filteredReturn)
 
