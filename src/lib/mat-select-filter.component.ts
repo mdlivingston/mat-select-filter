@@ -24,7 +24,7 @@ import {
   styleUrls: ['./mat-select-filter.component.scss']
 })
 export class MatSelectFilterComponent implements OnInit, OnDestroy {
-  @ViewChild('input') input;
+  @ViewChild('input', { static: true }) input;
 
   @Input('array') array: any;
   @Input('placeholder') placeholder: string;

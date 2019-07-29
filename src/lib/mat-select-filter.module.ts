@@ -1,4 +1,4 @@
-import { MatProgressSpinnerModule } from '@angular/material';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectFilterComponent } from './mat-select-filter.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
