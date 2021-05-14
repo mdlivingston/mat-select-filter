@@ -2,8 +2,8 @@
   "name": "mat-select-filter",
   "version": "2.3.8",
   "peerDependencies": {
-    "@angular/common": "^12.0.0",
-    "@angular/core": "^12.0.0"
+    "@angular/common": ">=9.0.0 <13.0.0",
+    "@angular/core": ">=9.0.0 <13.0.0"
   },
   "main": "bundles/mat-select-filter.umd.js",
   "module": "fesm5/mat-select-filter.js",
