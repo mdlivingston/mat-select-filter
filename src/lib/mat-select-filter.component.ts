@@ -7,6 +7,7 @@ import {
   NINE,
   SPACE, END, HOME,
 } from '@angular/cdk/keycodes';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'mat-select-filter',
   template: `
@@ -24,6 +25,7 @@ import {
   styleUrls: ['./mat-select-filter.component.scss']
 })
 export class MatSelectFilterComponent implements OnInit, OnDestroy {
+  private searchFormValueChangesSubscription: Subscription;
   @ViewChild('input', { static: true }) input;
 
   @Input('array') array: any;
@@ -50,7 +52,7 @@ export class MatSelectFilterComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.searchForm.valueChanges.subscribe(value => {
+    this.searchFormValueChangesSubscription =  this.searchForm.valueChanges.subscribe(value => {
       if (this.showSpinner) {
         this.localSpinner = true;
       }
@@ -104,5 +106,6 @@ export class MatSelectFilterComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy() {
     this.filteredReturn.emit(this.array);
+    this.searchFormValueChangesSubscription.unsubscribe();
   }
 }
