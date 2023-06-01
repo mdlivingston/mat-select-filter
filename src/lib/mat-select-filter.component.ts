@@ -31,7 +31,7 @@ export class MatSelectFilterComponent implements OnInit, OnDestroy {
   @Input('array') array: any;
   @Input('placeholder') placeholder: string;
   @Input('color') color: string;
-  @Input('displayMember') displayMember: string;
+  @Input('displayMember') displayMember: string | string[];
   @Input('showSpinner') showSpinner = true;
   @Input('noResultsMessage') noResultsMessage = 'No results';
   @Input('hasGroup') hasGroup: boolean;
@@ -64,11 +64,37 @@ export class MatSelectFilterComponent implements OnInit, OnDestroy {
         } else if (this.hasGroup && this.groupArrayName && this.displayMember) {
           this.filteredItems = this.array.map(a => {
             const objCopy = Object.assign({}, a);
-            objCopy[this.groupArrayName] = objCopy[this.groupArrayName].filter(g => g[this.displayMember].toLowerCase().includes(value['value'].toLowerCase()));
+            objCopy[this.groupArrayName] = objCopy[this.groupArrayName].filter(name => {
+              // DISPLAY MEMBER IS AN ARRAY OF PROPERTY NAMES
+              if (Array.isArray(this.displayMember)){
+                const toCheck: string = this.displayMember
+                    .map(field => name[field]) // GET ALL PROPERTIES FROM OBJECT
+                    .filter(value => value !== null && value !== undefined) // REMOVE NIL VALUES
+                    .reduce((previousValue, currentValue) => `${previousValue}${currentValue}`, ''); // CONCAT ALL FIELDS
+
+                return toCheck.toLowerCase().includes(value['value'].toLowerCase());
+              }
+
+              // DISPLAY MEMBER IS A SINGLE PROPERTY
+              return name[this.displayMember].toLowerCase().includes(value['value'].toLowerCase());
+            });
             return objCopy;
           }).filter(x => x[this.groupArrayName].length > 0);
         } else {
-          this.filteredItems = this.array.filter(name => name[this.displayMember].toLowerCase().includes(value['value'].toLowerCase()));
+          this.filteredItems = this.array.filter(name => {
+            // DISPLAY MEMBER IS AS STRING ARRAY
+            if (Array.isArray(this.displayMember)){
+              const toCheck: string = this.displayMember
+                  .map(field => name[field]) // GET ALL PROPERTIES FROM OBJECT
+                  .filter(value => value !== null && value !== undefined) // DROP NIL VALUES
+                  .reduce((previousValue, currentValue) => `${previousValue}${currentValue}`, ''); // CONCAT ALL FIELDS
+
+              return toCheck.toLowerCase().includes(value['value'].toLowerCase());
+            }
+
+            // DISPLAY MEMBER IS A STRING
+            return name[this.displayMember].toLowerCase().includes(value['value'].toLowerCase());
+          });
         }
         // NO RESULTS VALIDATION
 
@@ -104,6 +130,7 @@ export class MatSelectFilterComponent implements OnInit, OnDestroy {
       event.stopPropagation();
     }
   }
+
   ngOnDestroy() {
     this.filteredReturn.emit(this.array);
     this.searchFormValueChangesSubscription.unsubscribe();
